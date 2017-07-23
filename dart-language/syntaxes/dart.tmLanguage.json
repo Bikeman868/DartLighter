@@ -37,6 +37,10 @@
 					"match": "\\b(abstract|class|extends|external|factory|implements|import|interface|get|native|operator|set|typedef)\\b"
 				},
 				{
+					"name": "keyword.control.async.dart",
+					"match": "\\b(async|await)\\b"
+				},
+				{
 					"name": "keyword.operator.bitwise.dart",
 					"match": "<<|>>>?|~|\\^|\\||&"
 				},
@@ -81,6 +85,13 @@
 		"variables": {
 			"patterns":[
 				{
+					"name": "keyword.control.async.dart",
+					"match": "Future<([a-zA-Z_][a-zA-Z0-9_]*)>",
+					"captures": {
+						"1": { "name": "entity.name.type.dart"	}
+					}
+				},
+				{
 					"match": "([a-zA-Z_][a-zA-Z0-9_]*(<[a-zA-Z_][a-zA-Z0-9_]*>)?) ([a-zA-Z_][a-zA-Z0-9_]*)",
 					"captures" :{
 						"1": { "name": "entity.name.type.dart" },
@@ -91,13 +102,28 @@
 			]
 		},
 		"strings": {
-			"name": "string.quoted.single.dart",
-			"begin": "'",
-			"end": "'",
-			"patterns": [
+			"patterns":[
 				{
-					"name": "constant.character.escape.dart",
-					"match": "\\\\."
+					"name": "string.quoted.single.dart",
+					"begin": "'",
+					"end": "'",
+					"patterns": [
+						{
+							"name": "constant.character.escape.dart",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name": "string.quoted.double.dart",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.dart",
+							"match": "\\\\."
+						}
+					]
 				}
 			]
 		},
